@@ -118,6 +118,16 @@
       background: #dbdbdb;
     }
 
+    #gobang #sizetopup #setting .main .clear {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      line-height: 13px;
+      margin-top: -26px;
+      right: 30px;
+      cursor: pointer;
+    }
+
     #gobang #panel {
       /*     width:500px;
     height:500px; */
@@ -162,6 +172,7 @@
         <div class="main">
           <div class="title">棋盘大小</div>
           <input id="input" value="15" type="number" min="6" max="20" placeholder="范围:6-20" />
+          <a class="clear" onclick="document.getElementById('input').value = ''">x</a>
           <div class="btns">
             <div id="sure">确认</div>
             <div id="cancel">取消</div>
