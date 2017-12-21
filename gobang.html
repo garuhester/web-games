@@ -1,26 +1,37 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8" />
+  <meta charset="UTF-8" />
 
-<style id="webmakerstyle">
-body {
-  margin: 0;
-  padding: 0;
-  background: #d8d8d8; }
+  <style id="webmakerstyle">
+    body {
+      margin: 0;
+      padding: 0;
+      background: #d8d8d8;
+    }
 
-#gobang {
-  margin: 0 auto;
-  padding: 10px; }
-  #gobang .btns {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0); }
+    #gobang {
+      margin: 0 auto;
+      padding: 10px;
+    }
+
+    #gobang .btns {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+
     #gobang .btns #restart {
-      border-right: 1px solid #b7b7b7; }
+      border-right: 1px solid #b7b7b7;
+    }
+
     #gobang .btns #size {
-      border-left: 1px solid #b7b7b7; }
-    #gobang .btns #restart, #gobang .btns #size {
+      border-left: 1px solid #b7b7b7;
+    }
+
+    #gobang .btns #restart,
+    #gobang .btns #size {
       width: 100px;
       height: 30px;
       background: #fff;
@@ -28,18 +39,25 @@ body {
       line-height: 30px;
       cursor: pointer;
       float: left;
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2); }
-      #gobang .btns #restart:active, #gobang .btns #size:active {
-        background: #eeebeb; }
-  #gobang #sizetopup {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: none; }
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    #gobang .btns #restart:active,
+    #gobang .btns #size:active {
+      background: #eeebeb;
+    }
+
+    #gobang #sizetopup {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      /* display: none; */
+    }
+
     #gobang #sizetopup #setting {
       min-width: 250px;
       height: 25%;
@@ -51,82 +69,107 @@ body {
       text-align: center;
       padding: 10px;
       box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
-      display: block; }
-      #gobang #sizetopup #setting .main {
-        width: 90%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%); }
-        #gobang #sizetopup #setting .main .title {
-          padding: 10px;
-          font-size: 20px; }
-        #gobang #sizetopup #setting .main #input {
-          width: 100%;
-          height: 35px;
-          border: 1px solid #000;
-          outline: none;
-          padding: 10px;
-          box-sizing: border-box;
-          font-size: 16px; }
-        #gobang #sizetopup #setting .main .btns {
-          width: 100%;
-          position: relative;
-          margin-top: 20px; }
-          #gobang #sizetopup #setting .main .btns #sure, #gobang #sizetopup #setting .main .btns #cancel {
-            width: 50%;
-            height: 30px;
-            background: #eee;
-            line-height: 30px;
-            float: left;
-            cursor: pointer; }
-            #gobang #sizetopup #setting .main .btns #sure:active, #gobang #sizetopup #setting .main .btns #cancel:active {
-              background: #dbdbdb; }
-  #gobang #panel {
-    /*     width:500px;
+      display: block;
+    }
+
+    #gobang #sizetopup #setting .main {
+      width: 90%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #gobang #sizetopup #setting .main .title {
+      padding: 10px;
+      font-size: 20px;
+    }
+
+    #gobang #sizetopup #setting .main #input {
+      width: 100%;
+      height: 35px;
+      border: 1px solid #000;
+      outline: none;
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 16px;
+      position: relative;
+    }
+
+    #gobang #sizetopup #setting .main .btns {
+      width: 100%;
+      position: relative;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+
+    #gobang #sizetopup #setting .main .btns #sure,
+    #gobang #sizetopup #setting .main .btns #cancel {
+      width: 50%;
+      height: 30px;
+      background: #eee;
+      line-height: 30px;
+      float: left;
+      cursor: pointer;
+    }
+
+    #gobang #sizetopup #setting .main .btns #sure:active,
+    #gobang #sizetopup #setting .main .btns #cancel:active {
+      background: #dbdbdb;
+    }
+
+    #gobang #panel {
+      /*     width:500px;
     height:500px; */
-    margin: 40px auto;
-    background: #ffefd1; }
+      margin: 40px auto;
+      background: #ffefd1;
+    }
+
     #gobang #panel .piece {
       /*       width:19px;
       height:19px;
       border:1px solid #000;
       padding:2px; */
-      float: left; }
-      #gobang #panel .piece .black {
-        width: 100%;
-        height: 100%;
-        background: #000;
-        border-radius: 50%;
-        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5); }
-      #gobang #panel .piece .white {
-        width: 100%;
-        height: 100%;
-        background: #fff;
-        border-radius: 50%;
-        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5); }
+      float: left;
+    }
 
-</style>
+    #gobang #panel .piece .black {
+      width: 100%;
+      height: 100%;
+      background: #000;
+      border-radius: 50%;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    #gobang #panel .piece .white {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+  </style>
 </head>
+
 <body>
-<div id="gobang">
-  <div class="btns">
-    <div id="restart">重新开始</div>
-    <div id="size">棋盘大小</div>
-  </div>
-  <div id="sizetopup">
-    <div id="setting">
-      <div class="main">
-        <div class="title">棋盘大小</div>
-        <input id="input" type="text" placeholder="范围:6-20"/>
-        <div class="btns">
-          <div id="sure">确认</div>      
-          <div id="cancel">取消</div>
+  <div id="gobang">
+    <div class="btns">
+      <div id="restart">重新开始</div>
+      <div id="size">棋盘大小</div>
+    </div>
+    <div id="sizetopup">
+      <div id="setting">
+        <div class="main">
+          <div class="title">棋盘大小</div>
+          <input id="input" value="15" type="number" min="6" max="20" placeholder="范围:6-20" />
+          <div class="btns">
+            <div id="sure">确认</div>
+            <div id="cancel">取消</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- <div id="panel">
+    <!-- <div id="panel">
     <div class="piece">
       <div class="black"></div>
     </div>
@@ -134,249 +177,265 @@ body {
       <div class="white"></div>
     </div>
   </div> -->
-</div>
+  </div>
 
-<script>
-//五子棋对象
-var gobang = function(){
-  
-  var panel = {
-    arr:[],//二维数组
-    width:500,
-    height:500,
-    count:15,
-    div:null,
-  }
-  var piece = {
-    border:1,
-    padding:1,
-    width:panel.width / panel.count,
-    height:panel.height / panel.count,
-  }
-  piece.width -= (2*piece.border+2*piece.padding);
-  piece.height -= (2*piece.border+2*piece.padding);
-  
-  var obj = {
-    panel,
-    piece,
-    nowPiece:0, //0为黑棋，1为白棋,
-    winNum:0
-  }
-  
-  return obj;
-}
+  <script>
+    //五子棋对象
+    var gobang = function (count) {
 
-//主函数
-function __main(){
-  
-  var m = this;
-  
-  //初始化init
-  this.init = () =>{
-    var gb = gobang();
-    
-    this.createPanel(gb);
-    this.createPiece(gb);
-    this.registClick(gb,true);
-  }
-  
-  //创建棋盘panel
-  this.createPanel = (gb) =>{
-    var gobang_div = document.getElementById('gobang');
-    gb.panel.div = document.createElement('div');
-    var panel_div = gb.panel.div;
-    panel_div.id = "panel";
-    panel_div.style.width = gb.panel.width + 'px';
-    panel_div.style.height = gb.panel.height + 'px';
-    panel_div.style.overflow = 'hidden';
-    gobang_div.appendChild(panel_div);
-  }
-  
-  //创建棋子容器piece
-  this.createPiece = (gb) =>{
-    var piece_div,rowArr = [];
-    for(let i=1;i<=Math.pow(gb.panel.count,2);i++){
-      piece_div = document.createElement('div');
-      piece_div.className = "piece";
-      piece_div.style.width = gb.piece.width + 'px';
-      piece_div.style.height = gb.piece.height + 'px';
-      piece_div.style.border = gb.piece.border + 'px solid #000';
-      piece_div.style.padding = gb.piece.padding + 'px';
-      gb.panel.div.appendChild(piece_div);
-      
-      //行数组
-      rowArr.push(piece_div);
-      
-      if(i % gb.panel.count == 0 && i!=1){
-        gb.panel.arr.push(rowArr);
-        rowArr = [];
+      var panel = {
+        arr: [],//二维数组
+        width: 500,
+        height: 500,
+        count: count,
+        div: null,
       }
+      var piece = {
+        border: 1,
+        padding: 1,
+        width: panel.width / panel.count,
+        height: panel.height / panel.count,
+      }
+      piece.width -= (2 * piece.border + 2 * piece.padding);
+      piece.height -= (2 * piece.border + 2 * piece.padding);
+
+      var obj = {
+        panel,
+        piece,
+        nowPiece: 0, //0为黑棋，1为白棋,
+        winNum: 0
+      }
+
+      return obj;
     }
-  } 
-  
-  //注册点击事件onclick
-  this.registClick = (gb,turn) =>{
-    
-    if(turn){
-      var topup = document.getElementById('sizetopup');
-      //重新开始
-      document.getElementById('restart').onclick = function(){
-        m.restart(gb);
+
+    //主函数
+    function __main() {
+
+      var m = this;
+
+      //初始化init
+      this.init = (count) => {
+        var gb = gobang(count);
+        m.createPanel(gb);
+        m.createPiece(gb);
+        m.registClick(gb, true);
       }
-      document.getElementById('size').onclick = function(){
-        topup.style.display = 'block';
+
+      //创建棋盘panel
+      this.createPanel = (gb) => {
+        var gobang_div = document.getElementById('gobang');
+        gb.panel.div = document.createElement('div');
+        var panel_div = gb.panel.div;
+        panel_div.id = "panel";
+        panel_div.style.width = gb.panel.width + 'px';
+        panel_div.style.height = gb.panel.height + 'px';
+        panel_div.style.overflow = 'hidden';
+        gobang_div.appendChild(panel_div);
       }
-      document.getElementById('cancel').onclick = function(){
-        topup.style.display = 'none';
-      }
-      
-      //注册
-      for(let i=0;i<gb.panel.arr.length;i++){
-        for(let j=0;j<gb.panel.arr[i].length;j++){
-          gb.panel.arr[i][j].onclick = function(){
-            if(this.innerHTML == ""){
-              if(gb.nowPiece == 0){
-                m.createPieceChild(this,gb,0,i,j);
-              }else if(gb.nowPiece == 1){
-                m.createPieceChild(this,gb,1,i,j);
-              }
-            }else{
-              alert("此处有子");
-            }
+
+      //创建棋子容器piece
+      this.createPiece = (gb) => {
+        var piece_div, rowArr = [];
+        for (let i = 1; i <= Math.pow(gb.panel.count, 2); i++) {
+          piece_div = document.createElement('div');
+          piece_div.className = "piece";
+          piece_div.style.width = gb.piece.width + 'px';
+          piece_div.style.height = gb.piece.height + 'px';
+          piece_div.style.border = gb.piece.border + 'px solid #000';
+          piece_div.style.padding = gb.piece.padding + 'px';
+          gb.panel.div.appendChild(piece_div);
+
+          //行数组
+          rowArr.push(piece_div);
+
+          if (i % gb.panel.count == 0 && i != 1) {
+            gb.panel.arr.push(rowArr);
+            rowArr = [];
           }
         }
       }
-    }else{
-      //取消
-      for(let i=0;i<gb.panel.arr.length;i++){
-        for(let j=0;j<gb.panel.arr[i].length;j++){
-          gb.panel.arr[i][j].onclick = function(){}
+
+      //注册点击事件onclick
+      this.registClick = (gb, turn) => {
+
+        if (turn) {
+          var topup = document.getElementById('sizetopup');
+          //重新开始
+          document.getElementById('restart').onclick = function () {
+            m.restart(gb);
+          }
+          //棋盘大小选择
+          document.getElementById('size').onclick = function () {
+            topup.style.display = 'block';
+          }
+          //取消棋盘大小选择
+          document.getElementById('cancel').onclick = function () {
+            topup.style.display = 'none';
+          }
+
+          //注册
+          for (let i = 0; i < gb.panel.arr.length; i++) {
+            for (let j = 0; j < gb.panel.arr[i].length; j++) {
+              gb.panel.arr[i][j].onclick = function () {
+                if (this.innerHTML == "") {
+                  if (gb.nowPiece == 0) {
+                    m.createPieceChild(this, gb, 0, i, j);
+                  } else if (gb.nowPiece == 1) {
+                    m.createPieceChild(this, gb, 1, i, j);
+                  }
+                } else {
+                  alert("此处有子");
+                }
+              }
+            }
+          }
+        } else {
+          //取消
+          for (let i = 0; i < gb.panel.arr.length; i++) {
+            for (let j = 0; j < gb.panel.arr[i].length; j++) {
+              gb.panel.arr[i][j].onclick = function () { }
+            }
+          }
+        }
+
+      }
+
+      //创建黑白棋pieceChild
+      this.createPieceChild = (obj, gb, type, x, y) => {
+        //创建棋子
+        var pieceChild = document.createElement('div');
+        type == 0 ? pieceChild.className = 'black' : pieceChild.className = 'white';
+        obj.appendChild(pieceChild);
+
+        //切换
+        type == 0 ? gb.nowPiece = 1 : gb.nowPiece = 0;
+
+        m.detectWinner(gb, type, x, y);
+      }
+
+      //检测
+      this.detect = (gb, line, type) => {
+        if (line.innerHTML.indexOf(type) != -1) {
+          gb.winNum++;
+          if (gb.winNum == 5) {
+            var restart = type == 'black' ? confirm("黑棋赢!!\n是否重新开始?") : confirm("白棋赢!!\n是否重新开始?");
+            if (restart) {
+              m.restart(gb);
+              return;
+            } else {
+              m.registClick(gb, false);
+              return;
+            }
+          }
+        } else {
+          gb.winNum = 0;
         }
       }
-    }
-    
-  }
-  
-  //创建黑白棋pieceChild
-  this.createPieceChild = (obj,gb,type,x,y) =>{
-    //创建棋子
-    var pieceChild = document.createElement('div'); 
-    type == 0 ? pieceChild.className = 'black' : pieceChild.className = 'white'; 
-    obj.appendChild(pieceChild);
 
-    //切换
-    type == 0 ? gb.nowPiece = 1 : gb.nowPiece = 0;
-    
-    m.detectWinner(gb,type,x,y);
-  }
-  
-  //检测
-  this.detect = (gb,line,type) =>{
-    if(line.innerHTML.indexOf(type)!=-1){
-      gb.winNum++;
-      if(gb.winNum == 5){
-        var restart = type == 'black' ? confirm("黑棋赢!!\n是否重新开始?") : confirm("白棋赢!!\n是否重新开始?");
-        if(restart){
-          m.restart(gb);
-          return;
-        }else{
-          m.registClick(gb,false);
-          return;
+      //检测赢家winner
+      this.detectWinner = (gb, type, x, y) => {
+
+        var row, column;
+
+        //行检测
+        for (let i = 0; i < gb.panel.count; i++) {
+          row = gb.panel.arr[x][i];
+          if (type == 0) { //黑棋
+            m.detect(gb, row, 'black');
+          } else if (type == 1) { //白棋
+            m.detect(gb, row, 'white');
+          }
+        }
+        gb.winNum = 0;
+        //列检测
+        for (let j = 0; j < gb.panel.count; j++) {
+          column = gb.panel.arr[j][y];
+          if (type == 0) { //黑棋
+            m.detect(gb, column, 'black');
+          } else if (type == 1) { //白棋
+            m.detect(gb, column, 'white');
+          }
+        }
+        gb.winNum = 0;
+        //左斜线检测
+        var nx = x, ny = y, obj;
+        for (var z = 0; z < gb.panel.count; z++) {
+          if (x == 0 || y == 0) {
+            break;
+          }
+          x--;
+          y--;
+        }
+        for (let i = 0; i < gb.panel.count; i++) {
+          if (x == gb.panel.count || y == gb.panel.count) {
+            break;
+          }
+          obj = gb.panel.arr[x++][y++];
+          if (type == 0) { //黑棋
+            m.detect(gb, obj, 'black');
+          } else if (type == 1) { //白棋
+            m.detect(gb, obj, 'white');
+          }
+        }
+        gb.winNum = 0;
+
+        //右斜线检测
+        x = nx, y = ny;
+        for (var z = 0; z < gb.panel.count; z++) {
+          if (x == 0 || y == gb.panel.count - 1) {
+            break;
+          }
+          x--;
+          y++;
+        }
+        for (let i = 0; i < gb.panel.count; i++) {
+          if (x == gb.panel.count || y == -1) {
+            break;
+          }
+          obj = gb.panel.arr[x++][y--];
+          if (type == 0) { //黑棋
+            m.detect(gb, obj, 'black');
+          } else if (type == 1) { //白棋
+            m.detect(gb, obj, 'white');
+          }
+        }
+        gb.winNum = 0;
+
+      }
+
+      //重新开始
+      this.restart = (gb) => {
+        if (gb.panel.div) {
+          gb.panel.div.parentNode.removeChild(gb.panel.div);
+        }
+        m.init(gb.panel.count);
+      }
+
+      this.start = () => {
+        document.getElementById('sure').onclick = function () {
+          var count = document.getElementById('input').value;
+          if (count >= 6 && count <= 20) {
+            var topup = document.getElementById('sizetopup');
+            topup.style.display = 'none';
+            var panel = document.getElementById('panel');
+            if (panel) {
+              panel.parentNode.removeChild(panel);
+            }
+            m.init(count);
+          } else {
+            alert("请输入6-20的棋盘大小");
+          }
         }
       }
-    }else{
-      gb.winNum = 0;
-    }
-  }
-  
-  //检测赢家winner
-  this.detectWinner = (gb,type,x,y) =>{
-    
-    var row,column;
-    
-    //行检测
-    for(let i=0;i<gb.panel.count;i++){
-      row = gb.panel.arr[x][i];
-      if(type == 0){ //黑棋
-        m.detect(gb,row,'black');
-      }else if(type == 1){ //白棋
-        m.detect(gb,row,'white');
-      }
-    }
-    gb.winNum = 0;
-    //列检测
-    for(let j=0;j<gb.panel.count;j++){
-      column = gb.panel.arr[j][y];
-      if(type == 0){ //黑棋
-        m.detect(gb,column,'black');
-      }else if(type == 1){ //白棋
-        m.detect(gb,column,'white');
-      }
-    }
-    gb.winNum = 0;
-    //左斜线检测
-    var nx=x,ny=y,obj;
-    for(var z=0;z < gb.panel.count;z++){
-      if(x == 0 || y == 0){
-        break; 
-      }
-      x--;
-      y--;
-    }
-    for(let i=0;i<gb.panel.count;i++){
-      if(x==gb.panel.count || y==gb.panel.count){
-        break;
-      }
-      obj = gb.panel.arr[x++][y++];
-      if(type == 0){ //黑棋
-        m.detect(gb,obj,'black');
-      }else if(type == 1){ //白棋
-        m.detect(gb,obj,'white');
-      }
-    }
-    gb.winNum = 0;
-    
-    //右斜线检测
-    x = nx,y = ny;
-    for(var z=0;z < gb.panel.count;z++){
-      if(x==0 || y==gb.panel.count-1){
-        break;
-      }
-      x--;
-      y++;
-    }
-    for(let i=0;i<gb.panel.count;i++){
-      if(x == gb.panel.count || y == -1){
-        break;
-      }
-      obj = gb.panel.arr[x++][y--];
-      if(type == 0){ //黑棋
-        m.detect(gb,obj,'black');
-      }else if(type == 1){ //白棋
-        m.detect(gb,obj,'white');
-      }
-    }
-    gb.winNum = 0;
-    
-  }
-  
-  //重新开始
-  this.restart = (gb) =>{
-    gb.panel.div.parentNode.removeChild(gb.panel.div);   
-    m.init(); 
-  }
-  
-}
 
-console.clear();
-var main = new __main();
-main.init();
+    }
 
+    var main = new __main();
+    main.start();
 
-
-
-
-//# sourceURL=userscript.js
-</script>
+    //# sourceURL=userscript.js
+  </script>
 </body>
+
 </html>
